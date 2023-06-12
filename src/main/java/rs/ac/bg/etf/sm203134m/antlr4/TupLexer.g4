@@ -79,4 +79,4 @@ fragment Y : [yY];
 fragment Z : [zZ];
 
 // ignore whitespace
-WS: [ \t\r\n]+ -> skip ;
+WS: [ \t\r\n]+ -> channel(HIDDEN);

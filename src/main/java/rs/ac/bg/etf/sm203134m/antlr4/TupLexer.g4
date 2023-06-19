@@ -36,8 +36,8 @@ XPATH: X DASH P A T H;
 
 // general
 INTEGER: [0-9]+ ;
-// todo separate two types of strings
-STRING: '"' ( ~["\\] | '\\' . )* '"' | '\'' ( ~['\\] | '\\' . )* '\'';
+STRING: '"' ( ~["\\] | '\\' . )* '"';
+STRING_START: '"' -> pushMode(IN_STRING);
 IDENTIFIER: [a-zA-Z_]+;
 
 
@@ -80,3 +80,23 @@ fragment Z : [zZ];
 
 // ignore whitespace
 WS: [ \t\r\n]+ -> channel(HIDDEN);
+
+/** "catch all" rule for any char not matche in a token rule of your
+ *  grammar. Lexers in Intellij must return all tokens good and bad.
+ *  There must be a token to cover all characters, which makes sense, for
+ *  an IDE. The parser however should not see these bad tokens because
+ *  it just confuses the issue. Hence, the hidden channel.
+ */
+ERRCHAR
+	:	.	-> channel(HIDDEN)
+	;
+
+mode IN_STRING;
+
+STRING_END
+    : '"' -> popMode
+    ;
+
+TEXT
+    : ( ~["\\] | '\\' . )
+    ;

@@ -5,7 +5,7 @@ options { tokenVocab=TupLexer; }
 test:
     testName
     testDescription
-    testType
+    browserDefinition?
     testSteps
 ;
 
@@ -16,11 +16,11 @@ testName: TEST? NAME COLON IDENTIFIER DOT;
 // DESCRIPTION: "Description".
 testDescription: TEST? DESCRIPTION COLON STRING DOT;
 
-// TEST TYPE: REST API | SELENIUM.
-testType: TEST? TYPE COLON (API|UI) DOT;
+// BROWSER: IDENTIFIER
+browserDefinition: BROWSER COLON IDENTIFIER+ DOT;
 
 // TEST STEPS: step...
-testSteps: testStepsHeader step+ ;
+testSteps: testStepsHeader step+;
 testStepsHeader: TEST? STEPS COLON;
 
 step:

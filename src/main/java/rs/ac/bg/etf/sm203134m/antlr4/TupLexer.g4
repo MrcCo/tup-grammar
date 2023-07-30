@@ -4,8 +4,6 @@ lexer grammar TupLexer;
 TEST: T E S T;
 NAME: N A M E;
 DESCRIPTION: D E S C R I P T I O N;
-TYPE: T Y P E;
-UI: U I;
 STEPS: S T E P S;
 EXECUTE: E X E C U T E;
 AN: A N;
@@ -33,6 +31,7 @@ CLICK: C L I C K;
 ON: O N;
 ELEMENT: E L E M E N T;
 XPATH: X DASH P A T H;
+BROWSER: B R O W S E R;
 
 // general
 INTEGER: [0-9]+ ;

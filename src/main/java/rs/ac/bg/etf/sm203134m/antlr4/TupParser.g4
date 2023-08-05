@@ -5,7 +5,7 @@ options { tokenVocab=TupLexer; }
 test:
     testName
     testDescription
-    testType
+    browserDefinition?
     testSteps
 ;
 
@@ -16,11 +16,11 @@ testName: TEST? NAME COLON IDENTIFIER DOT;
 // DESCRIPTION: "Description".
 testDescription: TEST? DESCRIPTION COLON STRING DOT;
 
-// TEST TYPE: REST API | SELENIUM.
-testType: TEST? TYPE COLON (API|UI) DOT;
+// BROWSER: IDENTIFIER
+browserDefinition: BROWSER COLON IDENTIFIER+ DOT;
 
 // TEST STEPS: step...
-testSteps: testStepsHeader step+ ;
+testSteps: testStepsHeader step+;
 testStepsHeader: TEST? STEPS COLON;
 
 step:
@@ -39,13 +39,13 @@ request: httpMethod? STRING;
 httpMethod: IDENTIFIER;
 requestHeaders: WITH HEADERS LEFT_SQUARE_BRACKET headerPair (COMMA headerPair)* RIGHT_SQUARE_BRACKET ;
 headerPair: LEFT_CURLY_BRACKET STRING COLON STRING RIGHT_CURLY_BRACKET ;
-requestBody: WITH BODY STRING;
+requestBody: WITH BODY SINGLE_QUOTE_STRING;
 
 // Assert that last response has status: ${status}.
 assertResponseCode: ASSERT THAT LAST RESPONSE HAS STATUS CODE COLON INTEGER DOT ;
 
 // Assert that last response body is: "...".
-assertResponseBody: ASSERT THAT LAST RESPONSE BODY IS COLON STRING DOT ;
+assertResponseBody: ASSERT THAT LAST RESPONSE BODY IS COLON SINGLE_QUOTE_STRING DOT ;
 
 // Assert that last response body has field: "${name}" with value: "${value}".
 assertResponseBodyContainsField: ASSERT THAT LAST RESPONSE BODY HAS FIELD COLON STRING WITH VALUE COLON STRING DOT;

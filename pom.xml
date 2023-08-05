@@ -6,7 +6,8 @@
 
     <groupId>rs.ac.bg.sm203134m</groupId>
     <artifactId>tup-grammar</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.0.1</version>
+
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -28,6 +29,14 @@
             </exclusions>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub MrcCo Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/MrcCo/tup-grammar</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <plugins>

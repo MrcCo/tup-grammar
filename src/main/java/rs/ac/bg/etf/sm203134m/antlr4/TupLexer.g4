@@ -37,6 +37,8 @@ BROWSER: B R O W S E R;
 INTEGER: [0-9]+ ;
 STRING: '"' ( ~["\\] | '\\' . )* '"';
 STRING_START: '"' -> pushMode(IN_STRING);
+SINGLE_QUOTE_STRING: '\'' ( ~['\\] | '\\' . )* '\'';
+SINGLE_QUOTE_STRING_START: '\'' -> pushMode(IN_SINGLE_QUOTE_STRING);
 IDENTIFIER: [a-zA-Z_]+;
 
 
@@ -98,4 +100,14 @@ STRING_END
 
 TEXT
     : ( ~["\\] | '\\' . )
+    ;
+
+mode IN_SINGLE_QUOTE_STRING;
+
+SINGLE_QUOTE_STRING_END
+    : '\'' -> popMode
+    ;
+
+SINGLE_QUOTE_TEXT
+    : ( ~['\\] | '\\' . )
     ;

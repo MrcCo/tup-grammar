@@ -1,7 +1,7 @@
 name: Publish package to GitHub Packages
 on:
   release:
-    types: [created]
+    types: [published]
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -14,6 +14,8 @@ jobs:
         with:
           java-version: '19'
           distribution: 'temurin'
+      - name: Set tagged version
+        run: mvn versions:set -DnewVersion={{ github.ref }}
       - name: Publish package
         run: mvn --batch-mode deploy
         env:

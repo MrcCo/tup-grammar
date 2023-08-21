@@ -10,14 +10,15 @@ test:
 ;
 
 
-// TEST: name.
+// Тest name: name.
 testName: TEST? NAME COLON IDENTIFIER DOT;
 
-// DESCRIPTION: "Description".
+// Test description: "Description".
 testDescription: TEST? DESCRIPTION COLON STRING DOT;
 
-// BROWSER: IDENTIFIER
-browserDefinition: BROWSER COLON IDENTIFIER+ DOT;
+// Browser: Edge
+browserDefinition: BROWSER COLON browserList DOT;
+browserList: IDENTIFIER (COMMA IDENTIFIER)+;
 
 // TEST STEPS: step...
 testSteps: testStepsHeader step+;
@@ -31,6 +32,7 @@ step:
     | openWebPage
     | assertThatCurrentPageIs
     | clickOnElementWithXPath
+    | assertThatTitleIs
 ;
 
 // Execute a API request to ${URL} (with headers ${headers}) ? (with body ${body})? .
@@ -58,3 +60,6 @@ clickOnElementWithXPath: CLICK ON ELEMENT WITH XPATH COLON STRING DOT;
 // assertions
 // Assert that current page is "${URL}".
 assertThatCurrentPageIs: ASSERT THAT CURRENT PAGE IS STRING DOT;
+
+// Assert current title is "${TITLE}".
+assertThatTitleIs: ASSERT THAT TITLE IS STRING DOT;

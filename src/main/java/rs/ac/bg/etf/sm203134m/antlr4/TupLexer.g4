@@ -32,6 +32,7 @@ ON: O N;
 ELEMENT: E L E M E N T;
 XPATH: X DASH P A T H;
 BROWSER: B R O W S E R;
+TITLE: T I T L E;
 
 // general
 INTEGER: [0-9]+ ;

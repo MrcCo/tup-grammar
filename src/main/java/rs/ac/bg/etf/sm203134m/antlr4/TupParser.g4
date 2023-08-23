@@ -32,6 +32,10 @@ step:
     | openWebPage
     | assertThatCurrentPageIs
     | clickOnElementWithXPath
+    | fillTextFieldWithValue
+//    popunjavanje forme
+// popups / notifikacije / toasts
+// prisutnost elementa
     | assertThatTitleIs
 ;
 
@@ -57,6 +61,8 @@ assertResponseBodyContainsField: ASSERT THAT LAST RESPONSE BODY HAS FIELD COLON 
 openWebPage: OPEN WEB PAGE COLON STRING DOT;
 clickOnElementWithXPath: CLICK ON ELEMENT WITH XPATH COLON STRING DOT;
 
+// Get text field with X-Path: ${PATH} and fill it with value: "${VALUE}".
+fillTextFieldWithValue: GET TEXT FIELD WITH XPATH COLON STRING AND FILL IT WITH VALUE STRING DOT;
 // assertions
 // Assert that current page is "${URL}".
 assertThatCurrentPageIs: ASSERT THAT CURRENT PAGE IS STRING DOT;

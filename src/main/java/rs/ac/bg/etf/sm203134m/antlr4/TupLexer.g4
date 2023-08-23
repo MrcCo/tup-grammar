@@ -33,6 +33,10 @@ ELEMENT: E L E M E N T;
 XPATH: X DASH P A T H;
 BROWSER: B R O W S E R;
 TITLE: T I T L E;
+GET: G E T;
+AND: A N D;
+FILL: F I L L;
+IT: I T;
 
 // general
 INTEGER: [0-9]+ ;

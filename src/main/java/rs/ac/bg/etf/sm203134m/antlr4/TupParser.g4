@@ -33,9 +33,7 @@ step:
     | assertThatCurrentPageIs
     | clickOnElementWithXPath
     | fillTextFieldWithValue
-//    popunjavanje forme
-// popups / notifikacije / toasts
-// prisutnost elementa
+    | assertThatThereIsNElementsWithXPath
     | assertThatTitleIs
 ;
 
@@ -50,7 +48,7 @@ requestBody: WITH BODY SINGLE_QUOTE_STRING;
 // Assert that last response has status: ${status}.
 assertResponseCode: ASSERT THAT LAST RESPONSE HAS STATUS CODE COLON INTEGER DOT ;
 
-// Assert that last response body is: "...".
+// Assert that last response body is: '...'.
 assertResponseBody: ASSERT THAT LAST RESPONSE BODY IS COLON SINGLE_QUOTE_STRING DOT ;
 
 // Assert that last response body has field: "${name}" with value: "${value}".
@@ -59,13 +57,19 @@ assertResponseBodyContainsField: ASSERT THAT LAST RESPONSE BODY HAS FIELD COLON 
 // ui tests
 // Open web page: "${URL}".
 openWebPage: OPEN WEB PAGE COLON STRING DOT;
-clickOnElementWithXPath: CLICK ON ELEMENT WITH XPATH COLON STRING DOT;
 
-// Get text field with X-Path: ${PATH} and fill it with value: "${VALUE}".
-fillTextFieldWithValue: GET TEXT FIELD WITH XPATH COLON STRING AND FILL IT WITH VALUE STRING DOT;
+// Click on element with X-Path: '${PATH}'.
+clickOnElementWithXPath: CLICK ON ELEMENT WITH XPATH COLON SINGLE_QUOTE_STRING DOT;
+
+// Fill text field with X-Path: '${PATH}' and fill it with value: "${VALUE}".
+fillTextFieldWithValue: FILL TEXTFIELD WITH XPATH COLON SINGLE_QUOTE_STRING WITH VALUE STRING DOT;
+
 // assertions
 // Assert that current page is "${URL}".
 assertThatCurrentPageIs: ASSERT THAT CURRENT PAGE IS STRING DOT;
 
 // Assert current title is "${TITLE}".
 assertThatTitleIs: ASSERT THAT TITLE IS STRING DOT;
+
+// Assert current title is "${TITLE}".
+assertThatThereIsNElementsWithXPath: ASSERT THAT THERE IS INTEGER ELEMENTS WITH XPATH COLON SINGLE_QUOTE_STRING DOT;
